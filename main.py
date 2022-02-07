@@ -4,13 +4,32 @@ from pydoc import classname
 import tkinter as tk
 global bg
 def saving():
-    if user.get()+ passw.get() == "":
-        label=tk.Label(signupwin,text="Please enter your User name and Password")
-        l1 = canvas2.create_window( 50, 100, anchor = "nw",window = label)
-    else:
+    found = False
+    empty = False
+    nf = open("data.txt","r")
+    for line in nf:
+        txt = line.split()[0]
+        if(user.get()==txt):
+            found  = True
+            label=tk.Label(signupwin,text="Account with this username already exist.Kindly use another Username.")
+            l1 = canvas2.create_window( 50, 210, anchor = "nw",window = label)
+        elif user.get()+ passw.get() == "":
+            empty = True
+            label=tk.Label(signupwin,text="Please enter your User name and Password")
+            l1 = canvas2.create_window( 50, 210, anchor = "nw",window = label)
+    
+        
+        
+    
+    nf.close()
+    if(not(found or empty)):
          file = open("data.txt","a")
          file.write(user.get()+" "+passw.get()+"\n")
          file.close()
+         label=tk.Label(signupwin,text="Your Account is Successfully created close this window now")
+         l1 = canvas2.create_window( 50, 210, anchor = "nw",window = label)
+
+    
 def signupwindow():
     global signupwin
     signupwin = tk.Toplevel(win)
