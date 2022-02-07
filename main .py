@@ -5,7 +5,32 @@ from queue import Empty
 import tkinter as tk
 global bg
 def update():
-    pass
+    file = open("data.txt","r")
+    lst = file.readlines()
+    file.close()
+    for line in lst:
+        if line.split()[0] == suser.get():
+            
+            ind = lst.index(line)
+    lst[ind] = userna.get()+" "+passwo.get()+" "+dobi.get()+" "+gend.get()+" "+addr.get("1.0",'end-1c')+"\n"
+    file = open("data.txt","w")
+    for li in lst:
+        file.write(li)
+            
+    file.close()
+    file = open("balance.txt","r")
+    lstnew = file.readlines()
+    file.close()
+    for line in lstnew:
+        if line.split()[0] == suser.get():
+            oldanobal = line.split()[1]
+            ind = lst.index(line)
+    lstnew[ind] = userna.get()+" "+ str(oldanobal)
+    file = open("balance.txt","w")
+    for li in lstnew:
+        file.write(li)
+    file.close()
+    
 def withdrawing():
     file = open("balance.txt","r")
     lst = file.readlines()
@@ -85,6 +110,7 @@ def chgpro():
     canvas6 = tk.Canvas(chngprowin, width = 635,height = 642)
     canvas6.pack(fill = "both", expand = True)
     canvas6.create_image( 0, 0, image = bg,anchor = "nw")
+    global userna,passwo,dobi,gend,addr
     userna =tk.Entry(chngprowin,width=15)
     passwo = tk.Entry(chngprowin,width=15)
     dobi = tk.Entry(chngprowin,width=15)
@@ -95,11 +121,11 @@ def chgpro():
     e3 = canvas6.create_window( 280, 200, anchor = "nw",window = dobi)
     e4 = canvas6.create_window( 200, 240, anchor = "nw",window = gend)
     e5 = canvas6.create_window( 200, 280, anchor = "nw",window = addr)
-    uword=tk.Label(chngprowin,text="Enter your Username")
-    pword=tk.Label(chngprowin,text="Enter your Password")
-    dobword=tk.Label(chngprowin,text="Enter your Date of Birth(DD/MM/YYYY)")
-    gword=tk.Label(chngprowin,text="Enter your Gender(M/F)")
-    aword=tk.Label(chngprowin,text="Enter your Address")
+    uword=tk.Label(chngprowin,text="Enter your (new) Username")
+    pword=tk.Label(chngprowin,text="Enter your (new) Password")
+    dobword=tk.Label(chngprowin,text="Enter your (new) Date of Birth(DD/MM/YYYY)")
+    gword=tk.Label(chngprowin,text="Enter your (new) Gender(M/F)")
+    aword=tk.Label(chngprowin,text="Enter your (new) Address")
     t1 = canvas6.create_window( 50, 120, anchor = "nw",window = uword)
     t2 = canvas6.create_window( 50, 160, anchor = "nw",window = pword)
     t3 = canvas6.create_window( 50, 200, anchor = "nw",window = dobword)
