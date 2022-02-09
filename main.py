@@ -74,7 +74,7 @@ def withdrawing():
             ind = lst.index(line)
     if int(oldbal)>=int(withd.get()):        
         lst[ind]=suser.get() + " " + str(int(oldbal) - int(withd.get()))+"\n"
-        witwin.destroy()
+        
     else:
         doneit=tk.Label(witwin,text="You balance is Insufficient")
         wi = canvas9.create_window( 400, 500, anchor = "nw",window = doneit)
@@ -104,9 +104,9 @@ def depositing():
     file.close()
     donedep=tk.Label(depwin,text="Successfull Deposited Money!!")
     depw = canvas8.create_window( 400, 500, anchor = "nw",window = donedep)
-    depwin.destroy()
+    
 def profile():
-    mainwin.destroy()
+    mainwin.withdraw()
     global prowin
     prowin = tk.Toplevel(win)
     canvas5 = tk.Canvas(prowin, width = win.winfo_screenwidth(),height = win.winfo_screenheight() )
@@ -135,11 +135,13 @@ def profile():
     lap3 = canvas5.create_window( 50, 390, anchor = "nw",window = la3)
     la4=tk.Label(prowin,text="Address"+" - "+addres,height = 3,width=60,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
     lap4 = canvas5.create_window( 50, 460, anchor = "nw",window = la4)
-    exitb = tk.Button(mainwin,text="Exit",command=exit,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
-    lap5 = canvas5.create_window( 50, 530, anchor = "nw",window = exitb)
+    exitb = tk.Button(prowin,text="Exit",command=exit,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    lap5 = canvas5.create_window( 50, 600, anchor = "nw",window = exitb)
+    back = tk.Button(prowin,text = "Back",command=backing7,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bb = canvas5.create_window(800,700,anchor="nw",window=back)
     prowin.mainloop()
 def chgpro():
-    mainwin.destroy()
+    mainwin.withdraw()
     global chngprowin
     chngprowin = tk.Toplevel(win)
     global canvas6
@@ -148,7 +150,7 @@ def chgpro():
     canvas6.create_image( 0, 0, image = bg,anchor = "nw")
     global userna,passwo,dobi,gend,addr
     userna =tk.Entry(chngprowin,width=15,font="CascadiaCode 15")
-    passwo = tk.Entry(chngprowin,width=15,font="CascadiaCode 15")
+    passwo = tk.Entry(chngprowin,width=15,font="CascadiaCode 15", show = '*')
     dobi = tk.Entry(chngprowin,width=15,font="CascadiaCode 15")
     gend = tk.Entry(chngprowin,width=5,font="CascadiaCode 15")
     addr = tk.Text(chngprowin,width=20,height=5,font="CascadiaCode 15")
@@ -167,8 +169,12 @@ def chgpro():
     t3 = canvas6.create_window( 50, 390, anchor = "nw",window = dobword)
     t4 = canvas6.create_window( 50, 460, anchor = "nw",window = gword)
     t5 = canvas6.create_window( 50, 530, anchor = "nw",window = aword)
-    dsu = tk.Button(chngprowin,text = "Update your Info",command=update,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
+    dsu = tk.Button(chngprowin,text = "Update your Info",command=update,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     bd = canvas6.create_window(50,600,anchor="nw",window=dsu)
+    showp = tk.Button(chngprowin,text = "Show Password",command=show3,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bp = canvas6.create_window(850,320,anchor="nw",window=showp)
+    back = tk.Button(chngprowin,text = "Back",command=backing8,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bb = canvas6.create_window(740,700,anchor="nw",window=back)
     chngprowin.mainloop()
 def exit():
     mainwin.destroy()
@@ -192,7 +198,7 @@ def deactivate():
     deacwin.destroy()        
 
 def deac():
-    mainwin.destroy()
+    mainwin.withdraw()
     global deacwin
     deacwin = tk.Toplevel(win)
     canvas7 = tk.Canvas(deacwin, width = win.winfo_screenwidth(),height = win.winfo_screenheight())
@@ -200,12 +206,17 @@ def deac():
     canvas7.create_image( 0, 0, image = bg,anchor = "nw")
     label1=tk.Label(deacwin,text="Please confirm if you really want to deactivate ?",height = 1,width=50,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
     lp1 = canvas7.create_window( 50, 250, anchor = "nw",window = label1)
-    dsu = tk.Button(deacwin,text = "Confirm Now",command=deactivate,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
+    dsu = tk.Button(deacwin,text = "Confirm Now",command=deactivate,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     bd = canvas7.create_window(50,400,anchor="nw",window=dsu)
+    back = tk.Button(deacwin,text = "Back",command=backing4,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bb = canvas7.create_window(300,600,anchor="nw",window=back)
     deacwin.mainloop()
-    
+def backing4():
+    deacwin.destroy()
+    mainwin.deiconify()
+
 def deposit():
-    mainwin.destroy()
+    mainwin.withdraw()
     global depwin
     depwin = tk.Toplevel(win)
     global canvas8
@@ -218,14 +229,26 @@ def deposit():
     aword=tk.Label(depwin,text="Enter amount you want to deposit",height = 1,width=50,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
     dept1 = canvas8.create_window( 1000, 250, anchor = "nw",window = dep,height=50,width=200)
     dept2 = canvas8.create_window( 50, 250, anchor = "nw",window = aword)
-    dsu = tk.Button(depwin,text = "Deposit Now",command=depositing,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
+    dsu = tk.Button(depwin,text = "Deposit Now",command=depositing,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     bd = canvas8.create_window(50,350,anchor="nw",window=dsu)
-
-
+    back = tk.Button(depwin,text = "Back",command=backing5,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bb = canvas8.create_window(300,600,anchor="nw",window=back)
+def backing5():
+    depwin.destroy()
+    mainwin.deiconify()
+def backing6():
+    witwin.destroy()
+    mainwin.deiconify()
+def backing7():
+    prowin.destroy()
+    mainwin.deiconify()
+def backing8():
+    chngprowin.destroy()
+    mainwin.deiconify()
 
     depwin.mainloop()
 def withdraw():
-    mainwin.destroy()
+    mainwin.withdraw()
     global witwin
     witwin = tk.Toplevel(win)
     global canvas9
@@ -238,11 +261,13 @@ def withdraw():
     aword=tk.Label(witwin,text="Enter amount you want to withdraw",height = 1,width=50,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
     dept1 = canvas9.create_window( 1000, 250, anchor = "nw",window = withd,height=50,width=200)
     dept2 = canvas9.create_window( 50, 250, anchor = "nw",window = aword)
-    dsu = tk.Button(witwin,text = "Withdraw Now",command=withdrawing,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
+    dsu = tk.Button(witwin,text = "Withdraw Now",command=withdrawing,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     bd = canvas9.create_window(50,350,anchor="nw",window=dsu)
+    back = tk.Button(witwin,text = "Back",command=backing6,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bb = canvas9.create_window(300,600,anchor="nw",window=back)
     witwin.mainloop()
 def mainwindow():
-
+    signinwin.withdraw()
     global mainwin
     mainwin = tk.Toplevel(win)
     mainwin.geometry(str(win.winfo_screenwidth())+"x"+str(win.winfo_screenheight()))
@@ -250,14 +275,15 @@ def mainwindow():
     canvas4 = tk.Canvas(mainwin, width = win.winfo_screenwidth(),height = win.winfo_screenheight())
     canvas4.pack(fill = "both", expand = True)
     canvas4.create_image( 0, 0, image = bg,anchor = "nw")
-    b1 = tk.Button(mainwin,text="Profile",command=profile,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
-    b2 = tk.Button(mainwin,text="Change Profile",command=chgpro,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
-    b3 = tk.Button(mainwin,text="Exit",command=exit,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
-    b4 = tk.Button(mainwin,text="Deactivate",command=deac,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
-    b5 = tk.Button(mainwin,text="Deposit",command=deposit,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
-    b6 = tk.Button(mainwin,text="Withdraw",command=withdraw,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
+    b1 = tk.Button(mainwin,text="Profile",command=profile,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    b2 = tk.Button(mainwin,text="Change Profile",command=chgpro,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    b3 = tk.Button(mainwin,text="Exit",command=exit,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    b4 = tk.Button(mainwin,text="Deactivate",command=deac,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    b5 = tk.Button(mainwin,text="Deposit",command=deposit,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    b6 = tk.Button(mainwin,text="Withdraw",command=withdraw,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     balance = tk.Label(mainwin,text="Balance",height = 1,width=20,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
     file = open("balance.txt","r")
+    
     lstline = file.readlines()
 
     file.close()
@@ -278,6 +304,8 @@ def mainwindow():
     cb4 = canvas4.create_window( 1100, 300, anchor = "nw",window = b4)
     cb5 = canvas4.create_window( 1100, 450, anchor = "nw",window = b5)
     cb6 = canvas4.create_window( 1100, 600, anchor = "nw",window = b6)
+    back = tk.Button(mainwin,text = "Back",command=backing3,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bb = canvas4.create_window(600,700,anchor="nw",window=back)
     mainwin.mainloop()
 
 def saving():
@@ -348,6 +376,7 @@ def check():
     
     nf.close()
 def signin():
+    win.withdraw()
     global signinwin
     signinwin = tk.Toplevel(win)
     signinwin.geometry(str(win.winfo_screenwidth())+"x"+str(win.winfo_screenheight()))
@@ -358,17 +387,32 @@ def signin():
     global suser
     suser =tk.Entry(signinwin,width=15,font="CascadiaCode 15")
     global spassw
-    spassw = tk.Entry(signinwin,width=15,font="CascadiaCode 15")
+    spassw = tk.Entry(signinwin,width=15,font="CascadiaCode 15", show = '*')
     e1 = canvas3.create_window( 600, 250, anchor = "nw",window = suser,height=50,width=200)
     e2 = canvas3.create_window( 600, 320, anchor = "nw",window = spassw,height=50,width=200)
     uword=tk.Label(signinwin,text="Enter your Username",height = 1,width=31,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
     pword=tk.Label(signinwin,text="Enter your Password",height = 1,width=31,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
     t1 = canvas3.create_window( 50, 250, anchor = "nw",window = uword)
     t2 = canvas3.create_window( 50, 320, anchor = "nw",window = pword)
-    dsi = tk.Button(signinwin,text = "Sign In",command=check,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
+    dsi = tk.Button(signinwin,text = "Sign In",command=check,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     bd = canvas3.create_window(50,400,anchor="nw",window=dsi)
+    showp = tk.Button(signinwin,text = "Show Password",command=show2,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bp = canvas3.create_window(850,320,anchor="nw",window=showp)
+    back = tk.Button(signinwin,text = "Back",command=backing2,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bb = canvas3.create_window(740,700,anchor="nw",window=back)
     signinwin.mainloop()  
+def backing():
+    signupwin.destroy()
+    win.deiconify()
+def backing2():
+    signinwin.destroy()
+    win.deiconify()
+def backing3():
+    mainwin.destroy()
+    signinwin.deiconify()
 def signupwindow():
+    win.withdraw()
+
     global signupwin
     signupwin = tk.Toplevel(win)
     signupwin.geometry(str(win.winfo_screenwidth())+"x"+str(win.winfo_screenheight()))
@@ -378,7 +422,7 @@ def signupwindow():
     canvas2.create_image( 0, 0, image = bg,anchor = "nw")   
     global user,passw,dob,gender,address
     user =tk.Entry(signupwin,width=15,font="CascadiaCode 15")
-    passw = tk.Entry(signupwin,width=15,font="CascadiaCode 15")
+    passw = tk.Entry(signupwin,width=15,font="CascadiaCode 15", show = '*')
     dob = tk.Entry(signupwin,width=15,font="CascadiaCode 15")
     gender = tk.Entry(signupwin,width=5,font="CascadiaCode 15")
     address = tk.Text(signupwin,width=20,height=5,font="CascadiaCode 15")
@@ -397,11 +441,28 @@ def signupwindow():
     t3 = canvas2.create_window( 50, 390, anchor = "nw",window = dobword)
     t4 = canvas2.create_window( 50, 460, anchor = "nw",window = gword)
     t5 = canvas2.create_window( 50, 530, anchor = "nw",window = aword)
-    dsu = tk.Button(signupwin,text = "Create your Account",command=saving,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
+    dsu = tk.Button(signupwin,text = "Create your Account",command=saving,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     bd = canvas2.create_window(50,600,anchor="nw",window=dsu)
+    showp = tk.Button(signupwin,text = "Show Password",command=show,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bp = canvas2.create_window(740,320,anchor="nw",window=showp)
+    back = tk.Button(signupwin,text = "Back",command=backing,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    bb = canvas2.create_window(740,700,anchor="nw",window=back)
     signupwin.mainloop()
-
-
+def show():
+    uword=tk.Label(signupwin,text=passw.get(),height=1,width=20,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
+    t1 = canvas2.create_window( 1100, 320, anchor = "nw",window = uword)
+    signupwin.after(1000 , lambda: uword.destroy())
+    
+def show2():
+    uword=tk.Label(signinwin,text=spassw.get(),height=1,width=20,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
+    t1 = canvas3.create_window( 600, 400, anchor = "nw",window = uword)
+    signinwin.after(1000 , lambda: uword.destroy())
+    
+def show3():
+    uword=tk.Label(chngprowin,text=passwo.get(),height=1,width=20,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
+    t1 = canvas6.create_window( 1150, 320, anchor = "nw",window = uword)
+    signinwin.after(1000 , lambda: uword.destroy())
+    
 
 
 win = tk.Tk(className=" AID Bank")
@@ -417,8 +478,8 @@ canvas1.pack(fill = "both", expand = True)
 canvas1.create_image( 0, 0, image = bg,anchor = "nw")
 
 
-si = tk.Button(win,text="Sign In",command=signin,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10)
-su = tk.Button(win,text="Create new Account",command= signupwindow,width=20,height=2,relief='groove',bg="#3598e8",fg="#f6f794",font="CascadiaCode 20",activeforeground="#b6bd39",activebackground="#394fbd",padx=10,pady=10 )
+si = tk.Button(win,text="Sign In",command=signin,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+su = tk.Button(win,text="Create new Account",command= signupwindow,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5 )
 
 b1 = canvas1.create_window( 100, 250, anchor = "nw",window = si)
 b2 = canvas1.create_window( 100, 500, anchor = "nw",window = su)
