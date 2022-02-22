@@ -74,6 +74,8 @@ def withdrawing():
             ind = lst.index(line)
     if int(oldbal)>=int(withd.get()):        
         lst[ind]=suser.get() + " " + str(int(oldbal) - int(withd.get()))+"\n"
+        donewit=tk.Label(witwin,text="Withdrawn is successfull!!")
+        wdi = canvas9.create_window( 400, 500, anchor = "nw",window = donewit)
         
     else:
         doneit=tk.Label(witwin,text="You balance is Insufficient")
@@ -82,6 +84,7 @@ def withdrawing():
     file = open("balance.txt","w")
     for li in lst:
         file.write(li)
+    
             
     
 def depositing():
@@ -216,7 +219,7 @@ def backing4():
     mainwin.deiconify()
 
 def deposit():
-    mainwin.withdraw()
+    mainwin.destroy()
     global depwin
     depwin = tk.Toplevel(win)
     global canvas8
@@ -235,10 +238,11 @@ def deposit():
     bb = canvas8.create_window(300,600,anchor="nw",window=back)
 def backing5():
     depwin.destroy()
-    mainwin.deiconify()
+    signinwin.deiconify()
 def backing6():
     witwin.destroy()
-    mainwin.deiconify()
+    signinwin.deiconify()
+    
 def backing7():
     prowin.destroy()
     mainwin.deiconify()
@@ -248,7 +252,8 @@ def backing8():
 
     depwin.mainloop()
 def withdraw():
-    mainwin.withdraw()
+    mainwin.destroy()
+    
     global witwin
     witwin = tk.Toplevel(win)
     global canvas9
@@ -281,6 +286,7 @@ def mainwindow():
     b4 = tk.Button(mainwin,text="Deactivate",command=deac,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     b5 = tk.Button(mainwin,text="Deposit",command=deposit,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
     b6 = tk.Button(mainwin,text="Withdraw",command=withdraw,width=20,height=1,relief='groove',bg="#78ff88",fg="#000",font="CascadiaCode 15",activeforeground="#fffafa",activebackground="#7b8897",padx=5,pady=5)
+    
     balance = tk.Label(mainwin,text="Balance",height = 1,width=20,relief="groove",bg="#f2f2f2",fg="#555",font="CascadiaCode 20",padx =5,pady=3)
     file = open("balance.txt","r")
     
