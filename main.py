@@ -323,7 +323,7 @@ def saving():
         if(user.get()==txt):
             found  = True
             label=tk.Label(signupwin,text="Account with this username already exist.Kindly use another Username.")
-            l1 = canvas2.create_window( 50, 750, anchor = "nw",window = label)
+            l1 = canvas2.create_window( 50, 700, anchor = "nw",window = label)
         elif (user.get() ==""):
             empty = True
             label=tk.Label(signupwin,text="Please fill username")
